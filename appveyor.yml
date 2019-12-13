@@ -1,0 +1,21 @@
+platform:
+  - amd64
+
+environment:
+  global:
+    VSVER: 14
+    my_secret:
+      secure: JjTWTxr8pcPc3kPdv5oBn7+AXXOhXeX1ifJD81fwKYGQ7zrY/2sFlBCGNzALN47V
+    my_salt:
+      secure: Wl72vNFFn4shly/A078XAwL0OBO5uoWiMhhg/Twrls0PLA3HmIsvS8g5xF8M8oT+QkTIBS5SZZ6Ykr2xhHgNiQ==
+
+  matrix:
+    - PYTHON: "C:\\Python36-x64"
+
+install:
+  - .\scripts\install.bat
+
+build: off
+
+test_script:
+  - .\scripts\run_appveyor.bat
