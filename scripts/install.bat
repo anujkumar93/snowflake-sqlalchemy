@@ -1,5 +1,5 @@
-nuget install secure-file -ExcludeVersion
-secure-file\tools\secure-file -decrypt parameters.appveyor.py.enc -secret %my_secret% -salt %my_salt% -out parameters.py
+#nuget install secure-file -ExcludeVersion
+#secure-file\tools\secure-file -decrypt parameters.appveyor.py.enc -secret %my_secret% -salt %my_salt% -out parameters.py
 copy parameters.py test
 
 SET SCRIPT_DIR=%~dp0

@@ -13,6 +13,8 @@ environment:
     - PYTHON: "C:\\Python36-x64"
 
 install:
+  - ps: iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))
+  - cmd: appveyor-tools\secure-file -decrypt parameters.appveyor.py.enc -secret %my_secret% -salt %my_salt% -out parameters.py
   - .\scripts\install.bat
 
 build: off
