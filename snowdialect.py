@@ -287,7 +287,7 @@ class SnowflakeDialect(default.DefaultDialect):
             if name not in foreign_key_map:
                 foreign_key_map[name] = {
                     'constrained_columns': [self.normalize_name(row['fk_column_name'])],
-                    'referred_schema': self.normalize_name(row['pk_schema_name']),
+                    'referred_schema': None,
                     'referred_table': self.normalize_name(row['pk_table_name']),
                     'referred_columns': [self.normalize_name(row['pk_column_name'])],
                     'name': name,
@@ -501,7 +501,7 @@ class SnowflakeDialect(default.DefaultDialect):
                                     )
         cursor = connection.execute(sql_command)
         ans = cursor.fetchone()
-        return {'text': ans['comment']}
+        return {'text': ans['comment'] if ans['comment'] else None}
 
 
 @sa_vnt.listens_for(Table, 'before_create')
